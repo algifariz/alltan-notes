@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 06 Jun 2022 pada 08.05
+-- Waktu pembuatan: 06 Jun 2022 pada 10.34
 -- Versi server: 5.7.33
 -- Versi PHP: 7.4.19
 
@@ -31,16 +31,24 @@ CREATE TABLE `tb_notes` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
   `body` text NOT NULL,
-  `created_at` timestamp NOT NULL,
-  `updated_at` timestamp NOT NULL
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `owner` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `tb_notes`
+-- Struktur dari tabel `tb_users`
 --
 
-INSERT INTO `tb_notes` (`id`, `title`, `body`, `created_at`, `updated_at`) VALUES
-(1, '', 'Strange', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+CREATE TABLE `tb_users` (
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -60,7 +68,7 @@ ALTER TABLE `tb_notes`
 -- AUTO_INCREMENT untuk tabel `tb_notes`
 --
 ALTER TABLE `tb_notes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
